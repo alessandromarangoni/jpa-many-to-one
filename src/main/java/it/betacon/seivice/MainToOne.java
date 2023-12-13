@@ -20,7 +20,6 @@ public class MainToOne {
         
         Department department = new Department();
         department.setName("Development");
-        
         entityManager.persist(department);
        
      // Creazione di un oggetto Employee e impostazione dei suoi attributi
@@ -29,7 +28,6 @@ public class MainToOne {
         employee.setSalary(2000);
         employee.setDeg("Java Developer");
         employee.setDepartment(department);
-        entityManager.persist(employee);
         
      // Creazione di un altro oggetto Employee e impostazione dei suoi attributi
         Employee employee2 = new Employee();
@@ -37,12 +35,14 @@ public class MainToOne {
         employee2.setSalary(2100);
         employee2.setDeg("Php Developer");
         employee2.setDepartment(department);
-        entityManager.persist(employee2);
         
-     // Commit della transazione, che salverà effettivamente le modifiche nel database
+        
+        entityManager.persist(employee);
+        entityManager.persist(employee2);
+      // Commit della transazione, che salverà effettivamente le modifiche nel database
         entityManager.getTransaction().commit();
 
-        // Chiusura dell'EntityManager e dell'EntityManagerFactory
+      // Chiusura dell'EntityManager e dell'EntityManagerFactory
         entityManager.close();
         emFactory.close();
 	}
